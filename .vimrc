@@ -2,14 +2,21 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=/home/raveline/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-"Bundles
+"Plugin loading
+Plugin 'gmarik/vundle'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'klen/python-mode'
+
+call vundle#end()
+
 
 " Powerline
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 set laststatus=2
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set guifont=Inconsolata\ for\ Powerline
@@ -17,14 +24,11 @@ let g:Powerline_symbols = 'fancy'
 set t_Co=256
 
 " Fugitive (g + git command in prompt)
-Bundle 'tpope/vim-fugitive'
 
 " Nerdtree (file browser)
-Bundle 'scrooloose/nerdtree'
 map <F3> :NERDTreeToggle<CR>
 
 " Syntastic
-Bundle 'scrooloose/syntastic'
 " Syntastic config
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_post_args='--ignore=E501'
@@ -44,7 +48,6 @@ let g:syntastic_haskell_hdevtools_args = '-g-ilib -g-isrc -g-i. -g-idist/build/a
 let g:hdevtools_options = '-g-ilib -g-isrc -g-i. -g-idist/build/autogen -g-Wall -g-package-conf='.FindCabalSandboxRootPackageConf()
 
 " Python mode
-Bundle 'klen/python-mode'
 "NO Linting - let syntastic deal with that
 let g:pymode_lint = 0
 
