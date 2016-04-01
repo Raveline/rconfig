@@ -2,8 +2,12 @@
 
 call plug#begin('~/.vim/plugged')
 
+"Status bar
 Plug 'https://github.com/vim-airline/vim-airline'
+"Linters integration
 Plug 'https://github.com/benekastah/neomake'
+"Markdown support
+Plug 'https://github.com/gabrielelana/vim-markdown'
 
 call plug#end()
 
@@ -14,6 +18,10 @@ call plug#end()
 " Python checker
 let g:neomake_python_flake8_maker={'args': ['--ignore=E501']}
 let g:neomake_python_enable_makers=['flake8']
+" Haskell checkers
+let g:neomake_haskell_hdevtools_maker={'args': ['-g-Wall']}
+let g:neomake_haskell_hlint_maker={}
+let g:neomake_haskell_enable_makers=['hdevtools', 'hlint']
 
 "General options
 let g:neomake_open_list=2
