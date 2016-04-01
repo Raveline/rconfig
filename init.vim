@@ -8,6 +8,8 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/benekastah/neomake'
 "Markdown support
 Plug 'https://github.com/gabrielelana/vim-markdown'
+"CtrlP
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -41,6 +43,7 @@ set ruler
 
 " Case-insensitive search
 set ignorecase
+set smartcase
 
 " Show matching brackets
 set showmatch
@@ -65,6 +68,8 @@ set shiftwidth=4
 set tabstop=4
 set wrap
 set number
+set noerrorbells
+set nojoinspaces
 syntax enable
 
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -79,3 +84,26 @@ set colorcolumn=120
 filetype plugin indent on
 
 colorscheme koehler
+
+"relative numbering, activated on leader + r
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
+" Shortcuts for CtrlP
+" Open file menu
+nnoremap <Leader>o :CtrlP<CR>
+" Open buffer menu
+nnoremap <Leader>b :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
+
+
